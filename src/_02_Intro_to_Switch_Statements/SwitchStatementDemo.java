@@ -8,7 +8,7 @@ public class SwitchStatementDemo {
 		// The following two blocks of code are logically the same.
 		
 		{
-			int x = new Random().nextInt(3);
+			/*int x = new Random().nextInt(3);
 			if(x == 0) { 
 				System.out.println("0");
 			} else if(x == 1) {
@@ -17,7 +17,7 @@ public class SwitchStatementDemo {
 				System.out.println("2");
 			} else {
 				System.out.println("Something went wrong :(");
-			}
+			}*/
 		}
 		
 		{
