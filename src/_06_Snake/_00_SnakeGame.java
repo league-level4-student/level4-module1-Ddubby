@@ -117,16 +117,21 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//1. Use a switch statement on e.getKeyCode()
 		//   to determine which key was pressed.
 		switch(e.getKeyCode()) {
-		case 39:
+		case KeyEvent.VK_RIGHT:
 				snake.setDirection(Direction.RIGHT);
-		case 37:
+				break;
+		case KeyEvent.VK_LEFT:
 				snake.setDirection(Direction.LEFT);
-		case 40:
+				break;
+		case KeyEvent.VK_DOWN:
 				snake.setDirection(Direction.DOWN);
-		case 38:
+				break;
+		case KeyEvent.VK_UP:
 				snake.setDirection(Direction.UP);
-		case 32:
+				break;
+		case KeyEvent.VK_SPACE:
 				snake.feed();
+				break;
 		}
 		
 		// if an arrow key is pressed, set the snake's 
@@ -143,6 +148,10 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//2. set the foodLocation variable equal to the Location object you just created.
 		//   use the snake's isLocationOnSnake method to make sure you don't put the food on the snake
 		if (!snake.isLocationOnSnake(location)) {
+			foodLocation = location;
+		} else {
+			location.x = random.nextInt(15);
+			location.y = random.nextInt(12);
 			foodLocation = location;
 		}
 	}
@@ -181,13 +190,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		
 		
 		
-		/*if (snake.isHeadCollidingWithBody()) {
-		//	gameOver();
-		}*/
-		
-		
+		if (snake.isHeadCollidingWithBody()) {
+			System.out.println("colliding");
+			gameOver();
+		}
 		
 		if (snake.isOutOfBounds()) {
+			System.out.println("out");
 			gameOver();
 		}
 		//3. if the location of the head is equal to the location of the food,
